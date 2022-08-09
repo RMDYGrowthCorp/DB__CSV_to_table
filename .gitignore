@@ -69,7 +69,6 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -102,3 +101,18 @@ dist
 
 # TernJS port file
 .tern-port
+
+#Zip files
+*.zip
+
+# Shopify_Webhooks_WITHFACEBOOK files
+Shopify_Webhooks_WITHFACEBOOK/
+*.zip
+*.zip
+*.zip
+.env
+*.env
+*/*.env
+*/*/*.env
+GoogleAds/ConversionToSpreadsheet/.env
+*.csv
