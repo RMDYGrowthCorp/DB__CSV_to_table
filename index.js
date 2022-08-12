@@ -26,8 +26,9 @@ let csvStream = fastcsv
       port: 5432
     });
     let query =
-      "INSERT INTO klaviyo_hevo3.webhook_marketing (email,id,phone_number,promo_flow_snc_test,sample_flow_test,teaser_test_fp,teaser_test_snc,__hevo_id,__hevo__ingested_at) VALUES";
-    await pool.connect(async (err, client, done) => {
+      // "INSERT INTO klaviyo_hevo3.webhook_marketing (email,id,phone_number,promo_flow_snc_test,sample_flow_test,teaser_test_fp,teaser_test_snc,__hevo_id,__hevo__ingested_at, snc_rtgt) VALUES";
+      "INSERT INTO klaviyo_hevo3.opened_emails (id,email,klaviyo_id,last_open) VALUES";
+      await pool.connect(async (err, client, done) => {
       if (err) throw err;
       try {
         csvData.forEach((row, idx, array) => {
