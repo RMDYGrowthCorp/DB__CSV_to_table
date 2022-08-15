@@ -10,7 +10,7 @@ const database_host = "rmdy.c4enjditb6kk.us-west-2.rds.amazonaws.com";
 const database_pw = process.env.DBPW;
 
 let csvStream = fastcsv
-  .parse()
+  .parse({ ignoreEmpty: true })
   .on("data", function(data) {
     csvData.push(data);
   })
@@ -33,7 +33,8 @@ let csvStream = fastcsv
       try {
         csvData.forEach((row, idx, array) => {
           const comma = idx === array.length - 1 ? '' : ','
-          query += `(${row.map(r => r ? isNaN(r) ? `'${r.replace(/'/g, '')}'` : r.replace(/'/g, '') : `''`).join()})${comma}\n`
+          const rowmap = row.map(r => r ? isNaN(r) ? `'${r.replace(/'/g, '')}'` : r.replace(/'/g, '') : `''`);
+          query += `(${rowmap.join()})${comma}\n`;
         });
         await fs.unlink('log.txt', function(err) {
           if(err) {
